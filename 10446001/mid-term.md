@@ -118,7 +118,15 @@ user_profile = {name: "kk", age: 18, blood_type: :b_negative}
 
 1. (10 分) 請簡述 `bundle install` 指令的用途。
 
+```
+Bundler的工具可以幫助我們檢查及安裝這個Rails應用程式所有依存的套件，每次修改gemfile就需要bundle install
+```
+
 2. (10 分) 請說明 `rails db:migrate` 這個指令的用途是什麼？
+
+```
+Migration(資料庫遷移)的用途是建立和修改資料庫資料表。Rails使用rake指令來執行Migrations。Migration的檔名中包含了Timestamp(時間戳章)，用來確保它們可以依照建立時間依序執行
+```
 
 3. (10 分) 假設某個 Controller 的程式碼如下：
 
@@ -138,7 +146,16 @@ end
 
 請問：
 - 第 3 行的 `@books` 前面的那個 `@` 是什麼意思？如果把 `@` 拿掉會發生什麼事？
+
+```
+@為實體變數，如果把＠拿掉的會變成區域變數，只能在index方法中執行
+```
+
 - 第 7 行以及第 8 行的 `@book`，如果把 `@` 拿掉會發生什麼事？為什麼？
+
+```
+@是指空氣中有這個值，在其他檔案中用@book餵給他傳值給他，如果拿掉會變成區域變數，在其他檔案就不能找到@book想要傳過去的值
+```
 
 ## Git 題目 (20 分)
 
