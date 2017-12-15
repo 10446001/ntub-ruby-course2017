@@ -10,12 +10,17 @@
 1. (10 分) 請完成本題實作內容
 
 ```ruby
-class Cat
-  # 請完成實作
-end
+  class Cat
+    def initialize(name)
+      @name = name      
+    end
+    def name
+      @name
+    end
+  end
 
-kitty = Cat.new("kitty")
-puts kitty.name  # 在畫面上印出 kitty 字樣
+  kitty = Cat.new("kitty")
+  puts kitty.name  # 在畫面上印出 kitty 字樣
 ```
 
 2. (5 分) 假設有個 Hash：
@@ -31,8 +36,15 @@ p profile["name"]
 ```
 
 會得到什麼結果? 為什麼?
+```
+會得到nil，要寫成[:name]才會輸出"kk"的結果，因為hash中它的key為:name而不是字串，:name為符號是一個帶有名字的物件，與字串不同之處是不可變的字串，處理速度快
+```
 
 3. (5 分) 如果要在 1 到 100 的數字當中，任意取出 5 個不重複的亂數，你會怎麼做？
+
+```
+  puts [*1..100].sample(5)
+```
 
 4. (10 分)
 ```ruby
@@ -47,6 +59,19 @@ Bank.transfer(10)
 
 上面這段程式碼執行後會發生什麼事？為什麼？如果有錯誤又該如何修正？
 
+```
+沒有定義transfer方法
+
+  class Bank
+    def self.transfer(amount)
+      puts "#{amount}"
+    end
+  end
+
+  Bank.transfer(10)
+
+```
+
 5. (10 分) 請問以下方法：
 
 ```ruby
@@ -54,6 +79,10 @@ link_to "刪除", products_path(product), method: :delete, class: "btn btn-defau
 ```
 
 `link_to` 方法共有幾個參數？為什麼？
+
+```
+3個參數，因為可以拆成link_to('刪除', products_path(product), {method: :delete, class: "btn btn-default"})，在最後一個參數{}中是放入hash，若在has中再加入多個還是算一個參數包在{}中
+```
 
 6. (10 分) 在 Ruby 裡面常會看到冒號的寫法，例如：
 
@@ -78,6 +107,12 @@ user_profile = {name: "kk", age: 18, blood_type: :b_negative}
 ```
 
 請問，這三種寫法分別代表什麼意思呢？
+
+```
+1.靠右邊:在ruby中叫做符號(symbol)是一個帶有名字的物件，也是一個類別的實體，沒辦法直接拿來當變數使用，symbol和字串的不同之處在於symbol是不可變的字串、處理速度比較快。
+2.靠左邊:和一般Java寫法比較相近，class: 類別的值對應到後面的"btn btn-default"
+3.兩邊都有:有一種連名帶姓的感覺、承接的意思，例如:大家都有一個叫做 Animal 的類別或是 Flyable 的模組，放在同一個專案裡就會打架了，所以設計namespace解決它，直接寫出blood_type: :b_negative，這樣就能清楚分辨
+```
 
 ## Rails 題目 (30 分)
 
